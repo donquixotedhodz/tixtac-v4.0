@@ -1,0 +1,396 @@
+:root {
+    --primary-blue: #4A90E2;
+    --secondary-blue: #5C9CE6;
+    --light-blue: #E8F1FC;
+    --hover-blue: #357ABD;
+    --text-blue: #2C3E50;
+    --success: #2ECC71;
+    --warning: #F1C40F;
+    --danger: #E74C3C;
+    --info: #3498DB;
+    --pastel-purple: #B39DDB;
+    --pastel-pink: #F8BBD0;
+    --pastel-green: #A5D6A7;
+    --pastel-orange: #FFCC80;
+    --card-1: #4A90E2;
+    --card-2: #2ECC71;
+    --card-3: #F1C40F;
+    --card-4: #E74C3C;
+    --sidebar-bg: #2C3E50;
+    --sidebar-header: #1A252F;
+    --sidebar-hover: #34495E;
+    --sidebar-active: #3498DB;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #F5F7FA;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 280px;
+    max-width: 280px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    background: var(--sidebar-bg) !important;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar.active {
+    margin-left: -280px;
+}
+
+#sidebar .sidebar-header {
+    padding: 25px 20px;
+    background: var(--sidebar-header);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#sidebar .sidebar-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: #fff;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul li a {
+    padding: 12px 25px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar ul li a i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+#sidebar ul li a:hover {
+    background: var(--sidebar-hover);
+    color: #fff;
+    padding-left: 30px;
+}
+
+#sidebar ul li.active > a {
+    background: var(--sidebar-active);
+    color: #fff;
+    font-weight: 500;
+}
+
+#sidebar ul ul a {
+    font-size: 0.95rem !important;
+    padding-left: 50px !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#content {
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+    background: #F5F7FA;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    margin-bottom: 25px;
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Card Colors */
+.total-orders {
+    background-color: var(--card-1);
+}
+
+.completed-orders {
+    background-color: var(--card-2);
+}
+
+.in-progress-orders {
+    background-color: var(--card-3);
+}
+
+.pending-orders {
+    background-color: var(--card-4);
+}
+
+.card-body {
+    padding: 1.75rem;
+}
+
+.card-title {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: var(--text-blue);
+    font-size: 1.1rem;
+}
+
+.card i {
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.card:hover i {
+    transform: scale(1.1);
+}
+
+.navbar {
+    padding: 20px 25px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+}
+
+#sidebarCollapse {
+    background: transparent;
+    border: none;
+    color: var(--text-blue);
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+#sidebarCollapse:hover {
+    background: var(--light-blue);
+}
+
+.btn-outline-primary {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-blue);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-blue);
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -280px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+    .card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Login Styles */
+.login-container {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-blue);
+    padding: 1rem;
+}
+
+.login-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 350px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.logo-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    border: 2px solid var(--primary-blue);
+    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.2);
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.logo-circle:hover .logo-image {
+    transform: scale(1.1);
+}
+
+.login-header h2 {
+    color: var(--text-blue);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.login-header p {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.role-selector {
+    margin-bottom: 1rem;
+}
+
+.role-card {
+    padding: 1rem;
+}
+
+.role-card i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.role-card h5 {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.role-card p {
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.form-floating {
+    margin-bottom: 0.75rem;
+}
+
+.form-floating > .form-control {
+    padding: 0.75rem 0.75rem;
+    height: calc(2.5rem + 2px);
+}
+
+.form-floating > label {
+    padding: 0.75rem;
+}
+
+.btn-login {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+}
+
+/* Password toggle icon styles */
+.password-field-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+}
+
+.password-toggle:hover {
+    color: #495057;
+}
+
+.password-toggle:focus {
+    outline: none;
+}
+
+/* Adjust form-floating padding for password fields */
+.form-floating .password-field-container .form-control {
+    padding-right: 32px;
+}
+
+/* Adjust password field container for form-floating */
+.form-floating .password-field-container {
+    width: 100%;
+}
+
+.form-floating .password-field-container .form-control {
+    height: calc(3.5rem + 2px);
+    line-height: 1.25;
+}
+
+.form-floating .password-field-container .password-toggle {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Ensure the input field takes full width */
+.password-field-container input {
+    width: 100%;
+    padding-right: 32px;
+}
+
+/* Adjust form-floating label position */
+.form-floating > .password-field-container > .form-control:focus ~ label,
+.form-floating > .password-field-container > .form-control:not(:placeholder-shown) ~ label {
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+/* Adjust icon size for form-floating */
+.form-floating .password-toggle i {
+    font-size: 14px;
+} 
