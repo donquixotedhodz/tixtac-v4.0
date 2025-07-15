@@ -137,6 +137,19 @@ require_once 'includes/header.php';
             </nav>
 
             <div class="container-fluid">
+                <!-- Print Header (hidden by default, shown only when printing) -->
+                <div class="print-header" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <img src="images/logo.png" alt="Company Logo" style="height: 60px; width: auto;">
+                        </div>
+                        <div class="text-end">
+                            <div style="font-size: 14px; font-weight: bold; color: #2c3e50;">Date Generated:</div>
+                            <div style="font-size: 12px; color: #7f8c8d;"><?= date('F j, Y \a\t g:i A') ?></div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Header -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
@@ -295,5 +308,143 @@ require_once 'includes/header.php';
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     </script>
+
+    <style>
+        @media print {
+            /* Hide screen elements */
+            .navbar, .sidebar, .btn, .card-header, .form-control, .form-select, 
+            .dropdown, .btn-group, .d-flex.gap-2 {
+                display: none !important;
+            }
+            
+            /* Show print header */
+            .print-header {
+                display: block !important;
+                margin-bottom: 30px !important;
+                padding-bottom: 20px !important;
+                border-bottom: 2px solid #34495e !important;
+                page-break-after: avoid !important;
+            }
+            
+            .print-header img {
+                display: block !important;
+                max-height: 60px !important;
+                width: auto !important;
+            }
+            
+            .print-header .text-end {
+                text-align: right !important;
+            }
+            
+            /* Reset page layout */
+            body {
+                margin: 0 !important;
+                padding: 20px !important;
+                font-family: 'Arial', sans-serif !important;
+                font-size: 12px !important;
+                line-height: 1.4 !important;
+                color: #000 !important;
+                background: white !important;
+            }
+            
+            /* Header styling */
+            .container-fluid {
+                max-width: none !important;
+                padding: 0 !important;
+            }
+            
+            /* Table styling for print */
+            .table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                margin-bottom: 20px !important;
+                font-size: 11px !important;
+            }
+            
+            .table th {
+                background: #34495e !important;
+                color: white !important;
+                font-weight: bold !important;
+                text-align: left !important;
+                padding: 12px 8px !important;
+                border: none !important;
+                font-size: 12px !important;
+            }
+            
+            .table td {
+                padding: 10px 8px !important;
+                border: none !important;
+                vertical-align: top !important;
+            }
+            
+            .table tbody tr:nth-child(even) {
+                background: #f8f9fa !important;
+            }
+            
+            /* Status badges for print */
+            .badge {
+                display: inline-block !important;
+                padding: 4px 8px !important;
+                font-size: 10px !important;
+                font-weight: bold !important;
+                border-radius: 3px !important;
+                border: 1px solid !important;
+            }
+            
+            .badge.bg-success {
+                background: #d4edda !important;
+                color: #155724 !important;
+                border-color: #c3e6cb !important;
+            }
+            
+            .badge.bg-danger {
+                background: #f8d7da !important;
+                color: #721c24 !important;
+                border-color: #f5c6cb !important;
+            }
+            
+            .badge.bg-info {
+                background: #d1ecf1 !important;
+                color: #0c5460 !important;
+                border-color: #bee5eb !important;
+            }
+            
+            /* Hide profile images in print */
+            .table img {
+                display: none !important;
+            }
+            
+            /* Hide action column in print */
+            .table th:last-child,
+            .table td:last-child {
+                display: none !important;
+            }
+            
+            /* Customer information styling */
+            .fw-medium {
+                font-weight: bold !important;
+                color: #2c3e50 !important;
+            }
+            
+            .text-muted {
+                color: #7f8c8d !important;
+            }
+            
+            .fw-semibold {
+                font-weight: bold !important;
+                color: #2c3e50 !important;
+            }
+            
+            /* Page breaks */
+            .table-responsive {
+                page-break-inside: auto !important;
+            }
+            
+            .table tr {
+                page-break-inside: avoid !important;
+                page-break-after: auto !important;
+            }
+        }
+    </style>
 </body>
 </html> 
