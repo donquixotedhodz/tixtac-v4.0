@@ -182,7 +182,7 @@ require_once 'includes/header.php';
                         </div>
                     </div>
                 </div>
-
+               
                 <!-- Screen Header -->
                 <div class="screen-header">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -624,7 +624,7 @@ require_once 'includes/header.php';
                 display: none !important;
             }
             
-           /* Show print header */
+            /* Show print header */
             .print-header {
                 display: block !important;
                 margin-bottom: 30px !important;
@@ -642,6 +642,7 @@ require_once 'includes/header.php';
             .print-header .text-end {
                 text-align: right !important;
             }
+            
             /* Reset page layout */
             body {
                 margin: 0 !important;
@@ -659,102 +660,125 @@ require_once 'includes/header.php';
                 padding: 0 !important;
             }
             
-            /* Table styling for print - Improved for readability, no borders */
+            /* Table styling for print - Redesigned for better readability */
             .table {
                 width: 100% !important;
                 border-collapse: collapse !important;
                 margin-bottom: 25px !important;
-                font-size: 13px !important;
-                background: white !important;
+                font-size: 12px !important;
+                border: none !important;
+                table-layout: fixed !important;
                 box-shadow: none !important;
                 border-radius: 0 !important;
                 overflow: visible !important;
-                table-layout: auto !important;
-                border: none !important;
             }
-
-            .table th, .table td {
-                padding: 10px 8px !important;
-                border: none !important; /* Remove all borders */
-                vertical-align: top !important;
-                background: white !important;
-                color: #222 !important;
-                font-size: 13px !important;
-                white-space: normal !important;
-                word-break: break-word !important;
-                overflow-wrap: break-word !important;
-                text-align: left !important;
-            }
-
+            
             .table th {
-                background: #2c3e50 !important;
-                color: #fff !important;
+                background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+                color: white !important;
                 font-weight: 700 !important;
+                text-align: left !important;
+                padding: 15px 10px !important;
+                border: none !important;
+                font-size: 13px !important;
                 text-transform: uppercase !important;
                 letter-spacing: 0.5px !important;
-                border: none !important; /* Remove border from header */
+                white-space: nowrap !important;
+                position: relative !important;
             }
-
+            
+            .table th:not(:last-child)::after {
+                content: none !important;
+            }
+            
+            .table td {
+                padding: 12px 10px !important;
+                border: none !important;
+                vertical-align: top !important;
+                line-height: 1.3 !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                white-space: normal !important;
+                background: white !important;
+                max-width: 0 !important;
+            }
+            
             .table tbody tr:nth-child(even) {
                 background: #f8f9fa !important;
             }
-
+            
             .table tbody tr:nth-child(odd) {
-                background: #fff !important;
+                background: white !important;
             }
-
+            
+            .table tbody tr:hover {
+                background: #e8f4fd !important;
+                transform: scale(1.01) !important;
+                transition: all 0.2s ease !important;
+            }
+            
+            /* Hide profile images in print */
+            .table img {
+                display: none !important;
+            }
+            
             /* Hide action column in print */
             .table th:last-child,
             .table td:last-child {
                 display: none !important;
             }
-
-            /* Fit table to print page */
-            .container-fluid,
-            .table-responsive,
-            .table {
-                width: 100% !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                overflow: visible !important;
+            
+            /* Specifically hide actions column in reports table */
+            #ordersTable th:last-child,
+            #ordersTable td:last-child {
+                display: none !important;
             }
-
-            .table th, .table td {
-                padding: 6px 4px !important;
-                font-size: 11px !important;
-                border: none !important;
-                white-space: normal !important;
-                word-break: break-word !important;
-                background: white !important;
-                color: #222 !important;
-                text-align: left !important;
+            
+            /* Hide badges and status indicators in print */
+            .badge {
+                display: none !important;
             }
-
-            .table th {
-                background: #2c3e50 !important;
-                color: #fff !important;
+            
+            /* Show status as text - Enhanced styling */
+            .badge + span,
+            .badge {
+                display: inline-block !important;
                 font-weight: 700 !important;
                 text-transform: uppercase !important;
+                font-size: 10px !important;
                 letter-spacing: 0.5px !important;
-            }
-
-            /* Optimize column widths for print */
-            .table th,
-            .table td {
-                min-width: 60px !important;
-                max-width: 180px !important;
-            }
-
-            /* Remove extra spacing and borders */
-            .table, .table tr, .table td, .table th {
+                padding: 4px 8px !important;
+                border-radius: 0 !important;
                 border: none !important;
-                margin: 0 !important;
             }
-
-            /* Reduce font size for better fit */
-            body {
-                font-size: 11px !important;
+            
+            /* Status-specific colors for better visibility */
+            .badge.bg-success,
+            .badge + span:contains('completed') {
+                background: #d4edda !important;
+                color: #155724 !important;
+                border-color: #c3e6cb !important;
+            }
+            
+            .badge.bg-warning,
+            .badge + span:contains('pending') {
+                background: #fff3cd !important;
+                color: #856404 !important;
+                border-color: #ffeaa7 !important;
+            }
+            
+            .badge.bg-info,
+            .badge + span:contains('in_progress') {
+                background: #d1ecf1 !important;
+                color: #0c5460 !important;
+                border-color: #bee5eb !important;
+            }
+            
+            .badge.bg-danger,
+            .badge + span:contains('cancelled') {
+                background: #f8d7da !important;
+                color: #721c24 !important;
+                border-color: #f5c6cb !important;
             }
             
             /* Improve text readability - Enhanced */
@@ -799,7 +823,7 @@ require_once 'includes/header.php';
             
             /* Date formatting */
             .table td:contains('2025') {
-                font-size: 10px !important;
+                font-size: 9px !important;
                 color: #495057 !important;
                 font-weight: 500 !important;
             }
@@ -962,14 +986,12 @@ require_once 'includes/header.php';
                 border-bottom: none !important;
                 padding-bottom: 8px !important;
             }
-
-            /* Do not print technician profile photo */
-            .table td img,
-            .table td .rounded-circle {
-                display: none !important;
-            }
         }
     </style>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/dashboard.js"></script>
 </body>
-</html>
+</html> 
